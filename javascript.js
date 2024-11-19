@@ -1,5 +1,9 @@
 console.log("Hello World");
 
+let humanScore = 0;
+let computerScore = 0;
+
+
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random()*3);
     switch(computerChoice) {
@@ -26,5 +30,29 @@ function getHumanChoice() {
 
 }
 
-console.log(getComputerChoice()); 
-console.log(getHumanChoice());
+const humanChoice = getHumanChoice();
+const computerChoice = getComputerChoice();
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log(`Tie! Play again! Score is player ${humanScore} and computer ${computerScore}!`)
+    } else if (
+        //define all human player winning conditions
+        humanChoice === 'scissors' && computerChoice === 'paper' ||
+        humanChoice === 'rock' && computerChoice === 'scissors' ||
+        humanChoice === 'paper' && computerChoice === 'rock'
+    ) {
+        humanScore++;
+        console.log(`You won! ${humanChoice} beats ${computerChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`)
+
+    }else{
+        computerScore++;
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`);
+       
+    }
+}
+
+// console.log(getComputerChoice()); 
+// console.log(getHumanChoice());
+
+playRound(humanChoice, computerChoice);
