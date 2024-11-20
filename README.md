@@ -51,10 +51,11 @@ declare function getComputerChoice
 
 ### Pseduocode
     declare PlayGame function
-    loop through 5 interations of play round
-        initialize increment variable to 0
-        set end condition to increment less than 5
-        call play round
-        Exit loop at end condition
+    initialize stopPlaying variable to false
+    initialize round to 1
+    while stopPlaying is false     
+        display message for round
+        call playRound
+        Exit: if round equals 5, set stopPlayin to true
     calculate winner
     return winner message
