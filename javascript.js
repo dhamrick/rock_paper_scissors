@@ -31,18 +31,16 @@ function getHumanChoice() {
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
-    
-    let keepPlaying = true;
+
     let round = 1;
 
-    while(keepPlaying) {
         console.log(`Round ${round}!`)
 
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
 
         playRound(humanChoice, computerChoice);
-        round++;
+        round++;        
 
         function playRound(humanChoice, computerChoice) {
             if (humanChoice === computerChoice) {
