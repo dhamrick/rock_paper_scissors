@@ -26,8 +26,6 @@ function getHumanChoice() {
 
 }
 
-
-
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
@@ -60,7 +58,6 @@ function playGame() {
             
             }
         }  
-    }
 
     console.log(`Finale Score: Player ${humanScore}, Computer ${computerScore}`);
     if(humanScore > computerScore) {
@@ -68,10 +65,4 @@ function playGame() {
     } else {
         console.log("The computer won! Better luck next time!");
     }
-
 }
-
-playGame();
-
-// console.log(getComputerChoice()); 
-// console.log(getHumanChoice());
