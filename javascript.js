@@ -43,8 +43,6 @@ function playGame() {
 
         playRound(humanChoice, computerChoice);
         round++;
-        round > 5 ? keepPlaying = false : keepPlaying = true;
-        
 
         function playRound(humanChoice, computerChoice) {
             if (humanChoice === computerChoice) {

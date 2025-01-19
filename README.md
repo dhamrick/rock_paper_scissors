@@ -51,9 +51,9 @@ declare function getComputerChoice
 
 ### Pseduocode
     declare PlayGame function
-    initialize stopPlaying variable to false
+    initialize keepPlaying variable to true
     initialize round to 1
-    while stopPlaying is false     
+    while keepPlaying is true     
         display message for round
         call playRound
         Exit: if round equals 5, set stopPlayin to true
