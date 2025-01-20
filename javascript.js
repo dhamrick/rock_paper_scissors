@@ -25,15 +25,12 @@ let computerScore = 0;
 
 let round = 1;
 
-   //const computerChoice = getComputerChoice();
-
-    round++;        
 
     function playRound(humanChoice, computerChoice) {
         const roundResult = document.createElement("div");
-        
+
         if (humanChoice === computerChoice) {
-            roundResult.textContent = `Tie! Play again! Score is player ${humanScore} and computer ${computerScore}!`
+            roundResult.textContent = `Round ${round} result: Tie! Play again! Score is player ${humanScore} and computer ${computerScore}!`
         } else if (
             //define all human player winning conditions
             humanChoice === 'scissors' && computerChoice === 'paper' ||
@@ -41,17 +38,32 @@ let round = 1;
             humanChoice === 'paper' && computerChoice === 'rock'
         ) {
             humanScore++;
-            roundResult.textContent  = `You won! ${humanChoice} beats ${computerChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`;
+            roundResult.textContent  = `Round ${round} result: You won! ${humanChoice} beats ${computerChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`;
     
         }else{
             computerScore++;
-            roundResult.textContent  = `You lose! ${computerChoice} beats ${humanChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`;
+            roundResult.textContent  = `Round ${round} result: You lose! ${computerChoice} beats ${humanChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`;
         
         }
-        gameDialogue.appendChild(roundResult);
+       gameDialogue.appendChild(roundResult);
+       round++;
+        if (humanScore >= 5 || computerScore >= 5) {
+            const endGameMessage = document.createElement("div");
+            const endGameScore = document.createElement("p");
+            const endGameWinner = document.createElement("p");
+            endGameScore.textContent = `Finale Score: Player ${humanScore}, Computer ${computerScore}`;
+            if (humanScore > computerScore) {
+                endGameWinner.textContent = "Congratulations! You won!"
+
+            } else {
+                endGameWinner.textContent = "The computer won! Better luck next time!"
+            }
+            endGameMessage.appendChild(endGameWinner);
+            endGameMessage.appendChild(endGameScore);
+            gameDialogue.appendChild(endGameMessage);
+        }
     }  
 
-console.log(`Finale Score: Player ${humanScore}, Computer ${computerScore}`);
 if(humanScore > computerScore) {
     console.log("Congratulations! You won!");
 } else {
