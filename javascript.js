@@ -1,5 +1,17 @@
 console.log("Hello World");
 
+const btnScissors = document.querySelector("#scissors");
+
+const btnsUserChoices = document.querySelectorAll(".humanChoice");
+console.log(btnsUserChoices); // just testing node list works
+btnsUserChoices.forEach((button) => {
+    button.addEventListener("click", () => {
+        alert(button.value);
+    })
+});
+
+btnScissors.addEventListener("click", () => {alert(btnScissors.value + btnScissors.className)});
+
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random()*3);
     switch(computerChoice) {
@@ -10,20 +22,6 @@ function getComputerChoice() {
         case 2: 
             return computerChoice = "paper";
     }
-}
-
-function getHumanChoice() {
-    let humanChoice = parseInt(prompt("scissors (0), rock (1), or paper (2): ", "2"));
-
-    switch(humanChoice) {
-        case 0:
-            return humanChoice = "scissors";
-        case 1:
-            return humanChoice = "rock";
-        case 2: 
-            return humanChoice = "paper";
-    }
-
 }
 
 function playGame() {
