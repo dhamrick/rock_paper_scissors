@@ -20,6 +20,8 @@ function getComputerChoice() {
     }
 }
 
+const gameDialogue = document.querySelector("#gameDialogue");
+
 let humanScore = 0;
 let computerScore = 0;
 
@@ -32,8 +34,10 @@ let round = 1;
     round++;        
 
     function playRound(humanChoice, computerChoice) {
+        let roundResult = null;
         if (humanChoice === computerChoice) {
             console.log(`Tie! Play again! Score is player ${humanScore} and computer ${computerScore}!`);
+            roundResult = `Tie! Play again! Score is player ${humanScore} and computer ${computerScore}!`
         } else if (
             //define all human player winning conditions
             humanChoice === 'scissors' && computerChoice === 'paper' ||
@@ -42,12 +46,17 @@ let round = 1;
         ) {
             humanScore++;
             console.log(`You won! ${humanChoice} beats ${computerChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`);
+            roundResult = `You won! ${humanChoice} beats ${computerChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`;
     
         }else{
             computerScore++;
             console.log(`You lose! ${computerChoice} beats ${humanChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`);
+            roundResult = `You lose! ${computerChoice} beats ${humanChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`;
         
         }
+        const resultRecord = document.createElement("div");
+        resultRecord.textContent = roundResult;
+        gameDialogue.appendChild(resultRecord);
     }  
 
 console.log(`Finale Score: Player ${humanScore}, Computer ${computerScore}`);
