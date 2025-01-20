@@ -1,5 +1,3 @@
-console.log("Hello World");
-
 const btnsUserChoices = document.querySelectorAll(".humanChoice");
 
 btnsUserChoices.forEach((button) => {
@@ -27,17 +25,15 @@ let computerScore = 0;
 
 let round = 1;
 
-    console.log(`Round ${round}!`)
-
-    const computerChoice = getComputerChoice();
+   //const computerChoice = getComputerChoice();
 
     round++;        
 
     function playRound(humanChoice, computerChoice) {
-        let roundResult = null;
+        const roundResult = document.createElement("div");
+        
         if (humanChoice === computerChoice) {
-            console.log(`Tie! Play again! Score is player ${humanScore} and computer ${computerScore}!`);
-            roundResult = `Tie! Play again! Score is player ${humanScore} and computer ${computerScore}!`
+            roundResult.textContent = `Tie! Play again! Score is player ${humanScore} and computer ${computerScore}!`
         } else if (
             //define all human player winning conditions
             humanChoice === 'scissors' && computerChoice === 'paper' ||
@@ -45,18 +41,14 @@ let round = 1;
             humanChoice === 'paper' && computerChoice === 'rock'
         ) {
             humanScore++;
-            console.log(`You won! ${humanChoice} beats ${computerChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`);
-            roundResult = `You won! ${humanChoice} beats ${computerChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`;
+            roundResult.textContent  = `You won! ${humanChoice} beats ${computerChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`;
     
         }else{
             computerScore++;
-            console.log(`You lose! ${computerChoice} beats ${humanChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`);
-            roundResult = `You lose! ${computerChoice} beats ${humanChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`;
+            roundResult.textContent  = `You lose! ${computerChoice} beats ${humanChoice}! Score is now: Player ${humanScore} and Computer ${computerScore}!`;
         
         }
-        const resultRecord = document.createElement("div");
-        resultRecord.textContent = roundResult;
-        gameDialogue.appendChild(resultRecord);
+        gameDialogue.appendChild(roundResult);
     }  
 
 console.log(`Finale Score: Player ${humanScore}, Computer ${computerScore}`);
