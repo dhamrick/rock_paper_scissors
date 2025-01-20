@@ -1,16 +1,12 @@
 console.log("Hello World");
 
-const btnScissors = document.querySelector("#scissors");
-
 const btnsUserChoices = document.querySelectorAll(".humanChoice");
-console.log(btnsUserChoices); // just testing node list works
+
 btnsUserChoices.forEach((button) => {
     button.addEventListener("click", () => {
         alert(button.value);
     })
 });
-
-btnScissors.addEventListener("click", () => {alert(btnScissors.value + btnScissors.className)});
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random()*3);
