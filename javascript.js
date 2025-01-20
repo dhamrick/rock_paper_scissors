@@ -4,7 +4,7 @@ const btnsUserChoices = document.querySelectorAll(".humanChoice");
 
 btnsUserChoices.forEach((button) => {
     button.addEventListener("click", () => {
-        alert(button.value);
+        playRound(button.value, getComputerChoice());
     })
 });
 
@@ -28,7 +28,7 @@ let round = 1;
     console.log(`Round ${round}!`)
 
     const computerChoice = getComputerChoice();
-    
+
     round++;        
 
     function playRound(humanChoice, computerChoice) {
