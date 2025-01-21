@@ -6,6 +6,10 @@ btnsUserChoices.forEach((button) => {
     })
 });
 
+const btnClear = document.querySelector("#resetDialogue");
+
+btnClear.addEventListener("click", () => resetDialogue());
+
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random()*3);
     switch(computerChoice) {
@@ -22,12 +26,11 @@ const gameDialogue = document.querySelector("#gameDialogue");
 
 let humanScore = 0;
 let computerScore = 0;
-
 let round = 1;
 
 
     function playRound(humanChoice, computerChoice) {
-        const roundResult = document.createElement("div");
+        const roundResult = document.createElement("p");
 
         if (humanChoice === computerChoice) {
             roundResult.textContent = `Round ${round} result: Tie! Play again! Score is player ${humanScore} and computer ${computerScore}!`
@@ -61,11 +64,19 @@ let round = 1;
             endGameMessage.appendChild(endGameWinner);
             endGameMessage.appendChild(endGameScore);
             gameDialogue.appendChild(endGameMessage);
+
+            resetGame();
         }
     }  
 
-if(humanScore > computerScore) {
-    console.log("Congratulations! You won!");
-} else {
-    console.log("The computer won! Better luck next time!");
-}
+    function resetGame() {
+        humanScore = 0;
+        computerScore = 0;
+        round = 1;
+    }
+
+    function resetDialogue() {
+        while (gameDialogue.firstChild) {
+            gameDialogue.removeChild(gameDialogue.firstChild);
+        }
+    }
